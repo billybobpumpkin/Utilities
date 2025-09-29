@@ -1,0 +1,25 @@
+# === Eclipse project files ===
+.project
+.classpath
+.settings/
+.metadata/
+.junk/
+.src/main/
+.src/main/forensic
+
+# === Build output ===
+bin/
+target/
+build/
+
+# === OS-specific files ===
+.DS_Store
+Thumbs.db
+
+# === IDEs ===
+.vscode/
+.idea/
+
+# === Logs and temporary files ===
+*.log
+*.tmp
