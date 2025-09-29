@@ -6,6 +6,7 @@
 junk/
 src/main/
 src/main/forensic
+lib/
 
 # === Build output ===
 bin/
