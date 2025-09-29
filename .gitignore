@@ -5,7 +5,7 @@
 .metadata/
 junk/
 src/main/
-src/main/forensic
+src/forensic
 lib/
 
 # === Build output ===
