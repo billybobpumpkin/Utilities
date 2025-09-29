@@ -30,6 +30,7 @@ public class DoubleLinkedList<T extends Comparable<T>> implements Serializable
 			{
 				current.setNext(node);
 				node.setPrev(current);
+				return;
 			}
 			this.size++;
 			current = current.getNext();

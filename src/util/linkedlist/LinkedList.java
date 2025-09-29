@@ -27,7 +27,10 @@ public class LinkedList<T extends Comparable<T>> implements Serializable
 		while (current != null)
 		{
 			if (current.getNext() == null)
+			{
 				current.setNext(node);
+				return;
+			}
 			this.size++;
 			current = current.getNext();
 		}
