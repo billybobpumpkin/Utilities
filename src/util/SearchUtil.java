@@ -2,33 +2,55 @@ package util;
 
 import java.lang.reflect.Array;
 
+/**
+ * A class the possesses methods for sorting arrays and searching in arrays.
+ * <p>
+ * @author Abraham Yelifari
+ * @version 1.0
+ * @since 2025-9-25 12:08
+ */
 public class SearchUtil
 {
-	public static int binarySearch(int a[], int searchKey, int low, int high)
+	/**
+	 * Uses the binary search algorithm to search through a sorted array. Takes
+	 * {@code O(log n)} time.
+	 * @param a the array to be searched in.
+	 * @param searchKey the value to find.
+	 * @param low the lowest value to be considered.
+	 * @param high the highest value to be considered.
+	 * @return the found value, or null.
+	 */
+	public static <T extends Comparable<? super T>> T binarySearch(T a[], T searchKey, int low, int high)
 	{
 		int middle;
 		
 		while(low <= high)
 		{
-			middle = (low + high)/2;
-			
-			if (a[middle] == searchKey)
-			{
-				return a[middle]; 
-			}
-			
-			if (searchKey > a[middle])
-			{
-				high = middle - 1;
-			}
-			else
-			{
-				low = middle + 1;
-			}
+			middle = (low + high) / 2;
+		    int cmp = searchKey.compareTo(a[middle]); // reversed
+
+		    if (cmp == 0) // searchKey == a[middle]
+		    {
+		        return a[middle];
+		    }
+
+		    if (cmp > 0) // searchKey > a[middle]
+		    {
+		        low = middle + 1;
+		    }
+		    else // searchKey < a[middle]
+		    {
+		        high = middle - 1;
+		    }
 		}
-		return -1;
+		return null;
 	}
 	
+	/**
+	 * Utilizes the merge sort algorithm. Time complexity is {@code O(log n)}.
+	 * @param <T>
+	 * @param arr the array to be sorted.
+	 */
 	public static <T extends Comparable<? super T>> void mergeSort(T[] arr)
 	{
         if (arr.length <= 1) return;
@@ -37,7 +59,9 @@ public class SearchUtil
 	
 	
 	
-
+	/*
+	 * Private method to help sort using recursion.
+	 */
     private static <T extends Comparable<? super T>> void mergeSort(T[] arr, int left, int right)
     {
         if (left >= right) return;
@@ -50,6 +74,9 @@ public class SearchUtil
         merge(arr, left, mid, right);
     }
 
+    /*
+	 * Private method to help sort using recursion.
+	 */
     private static <T extends Comparable<? super T>> void merge(T[] arr, int left, int mid, int right)
     {
     	T[] temp = (T[])Array.newInstance(arr.getClass().getComponentType(), arr.length);
